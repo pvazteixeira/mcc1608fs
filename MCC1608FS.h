@@ -56,9 +56,8 @@ class MCC1608FS
    int              m_ret_success;
    uint16_t*        m_ret_analog_data;
    uint16_t         m_data;
-   boost::multi_array<float, 2> m_voltage_data;
-   float*           m_voltage_data_pointer;
-   float            m_voltage;
+   std::vector<double> m_voltage_data;
+   double           m_voltage;
    int              m_num_chan;
    bool             m_error;
    struct sigaction m_sig_int_handler;

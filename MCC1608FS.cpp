@@ -85,7 +85,7 @@ void MCC1608FS::Run()
           int k = i*m_num_chan + j;
           m_data = rint(m_ret_analog_data[k]*m_table_AIN[m_range][j][0] + m_table_AIN[m_range][j][1]);
           m_voltage = volts_USB1608FS_Plus(m_data, m_range);
-          m_voltage_data[i][j] = m_voltage;
+          m_voltage_data[k] = m_voltage;
           if (m_write_files) {
             if (j == 0) {
               fprintf(savefile, "%f", m_voltage);
@@ -112,8 +112,7 @@ void MCC1608FS::Run()
       output_msg.num_samples = m_num_samples;
       output_msg.num_channels = m_num_channels;
       output_msg.scan_size = m_num_samples*m_num_channels;
-      m_voltage_data_pointer = (float*) m_voltage_data.data();
-      output_msg.scan = std::vector<double> (m_voltage_data_pointer, m_voltage_data_pointer + m_voltage_data.num_elements());
+      output_msg.scan = m_voltage_data;
       m_lcm.publish("MCC1608FS_scan", &output_msg);
 
       ptime pti1 = microsec_clock::local_time();
@@ -144,7 +143,7 @@ bool MCC1608FS::Setup()
   m_count = (uint32_t)m_num_samples;
   m_num_chan = (int)m_num_channels;
   m_ret_analog_data = new uint16_t[m_num_chan*m_count];
-  m_voltage_data.resize(boost::extents[m_num_samples][m_num_channels]);
+  m_voltage_data.resize(m_num_samples*m_num_channels);
   m_error = false;
 
   // attempt to connect to DAQ
