@@ -1,0 +1,10 @@
+package MCC1608FSlcm;
+
+struct scan_t
+{
+  int64_t timestamp;
+  int32_t num_samples;
+  int32_t num_channels;
+  int32_t scan_size;
+  double  scan[scan_size];
+}
