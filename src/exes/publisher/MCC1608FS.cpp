@@ -6,7 +6,7 @@
 /************************************************************/
 
 #include <iterator>
-#include "MCC1608FS.h"
+#include "MCC1608FS.hpp"
 #include <bot_param/param_util.h>
 #include <ConciseArgs>
 

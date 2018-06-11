@@ -23,8 +23,8 @@
 #include <boost/multi_array.hpp>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include "pmd.h"
-#include "usb-1608FS-Plus.h"
+#include <mcc1608fs/pmd.h>
+#include <mcc1608fs/usb-1608FS-Plus.h>
 #include <lcm/lcm-cpp.hpp>
 
 class MCC1608FS
