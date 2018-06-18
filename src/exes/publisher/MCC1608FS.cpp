@@ -60,7 +60,7 @@ void MCC1608FS::Run()
 
     // get data
     usbAInScanStart_USB1608FS_Plus(m_usb_handle, m_count, m_freq_sampling, m_channels, m_options);
-    m_ret_success = usbAInScanRead_USB1608FS_Plus(m_usb_handle, 1, m_num_chan, m_ret_analog_data, m_options);
+    m_ret_success = usbAInScanRead_USB1608FS_Plus(m_usb_handle, m_count, m_num_chan, m_ret_analog_data, m_options);
 
     FILE* savefile;
     if (m_write_files) {
